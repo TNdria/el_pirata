@@ -1,0 +1,84 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('promos', function (Blueprint $table) {
+            // Vérifier et ajouter les colonnes manquantes seulement si elles n'existent pas
+            if (!Schema::hasColumn('promos', 'hunt_id')) {
+                $table->foreignId('hunt_id')->nullable()->constrained('huntings')->onDelete('set null');
+            }
+            
+            if (!Schema::hasColumn('promos', 'type')) {
+                $table->enum('type', ['promo_code', 'vip_code'])->default('promo_code');
+            }
+            
+            if (!Schema::hasColumn('promos', 'is_used')) {
+                $table->boolean('is_used')->default(false);
+            }
+            
+            if (!Schema::hasColumn('promos', 'used_at')) {
+                $table->timestamp('used_at')->nullable();
+            }
+            
+            if (!Schema::hasColumn('promos', 'used_in_transaction')) {
+                $table->string('used_in_transaction')->nullable();
+            }
+            
+            // valid_until existe déjà, on ne l'ajoute pas
+        });
+
+        // Ajouter les index
+        Schema::table('promos', function (Blueprint $table) {
+            try {
+                $table->index(['type', 'is_used']);
+            } catch (\Exception $e) {
+                // Index existe déjà, ignorer l'erreur
+            }
+            
+            try {
+                $table->index(['user_id', 'type']);
+            } catch (\Exception $e) {
+                // Index existe déjà, ignorer l'erreur
+            }
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('promos', function (Blueprint $table) {
+            if (Schema::hasColumn('promos', 'hunt_id')) {
+                $table->dropForeign(['hunt_id']);
+                $table->dropColumn('hunt_id');
+            }
+            
+            if (Schema::hasColumn('promos', 'type')) {
+                $table->dropColumn('type');
+            }
+            
+            if (Schema::hasColumn('promos', 'is_used')) {
+                $table->dropColumn('is_used');
+            }
+            
+            if (Schema::hasColumn('promos', 'used_at')) {
+                $table->dropColumn('used_at');
+            }
+            
+            if (Schema::hasColumn('promos', 'used_in_transaction')) {
+                $table->dropColumn('used_in_transaction');
+            }
+        });
+    }
+
+};

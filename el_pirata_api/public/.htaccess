@@ -1,0 +1,25 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirige toutes les requêtes vers index.php sauf si le fichier ou dossier existe
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# Sécuriser certains fichiers
+<Files .env>
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files composer.json>
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files composer.lock>
+    Order allow,deny
+    Deny from all
+</Files>

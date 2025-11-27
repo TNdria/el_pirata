@@ -1,0 +1,117 @@
+/* Styles globaux pour éviter les conflits entre PrimeVue et Tailwind */
+
+/* Reset de base pour les éléments de formulaire */
+input, button, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* Styles pour les inputs personnalisés */
+.custom-input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #374151;
+  background-color: #171e26;
+  color: #d1d5db;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.custom-input::placeholder {
+  color: #9ca3af;
+}
+
+/* Styles pour les boutons personnalisés */
+.custom-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  text-decoration: none;
+}
+
+.custom-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Styles pour les conteneurs */
+.custom-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Utilitaires de spacing */
+.mb-1 { margin-bottom: 4px; }
+.mb-2 { margin-bottom: 8px; }
+.mb-3 { margin-bottom: 12px; }
+.mb-4 { margin-bottom: 16px; }
+.mb-6 { margin-bottom: 24px; }
+
+.mt-1 { margin-top: 4px; }
+.mt-2 { margin-top: 8px; }
+.mt-3 { margin-top: 12px; }
+.mt-4 { margin-top: 16px; }
+.mt-6 { margin-top: 24px; }
+
+.p-2 { padding: 8px; }
+.p-3 { padding: 12px; }
+.p-4 { padding: 16px; }
+.p-6 { padding: 24px; }
+
+/* Utilitaires de couleur */
+.text-white { color: white; }
+.text-gray-300 { color: #d1d5db; }
+.text-gray-400 { color: #9ca3af; }
+.text-gray-500 { color: #6b7280; }
+
+.bg-gray-800 { background-color: #1f2937; }
+.bg-gray-900 { background-color: #111827; }
+
+/* Utilitaires de display */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+
+/* Utilitaires de taille */
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.min-h-screen { min-height: 100vh; }
+
+/* Utilitaires de border */
+.rounded { border-radius: 4px; }
+.rounded-lg { border-radius: 8px; }
+.rounded-xl { border-radius: 12px; }
+
+/* Utilitaires de shadow */
+.shadow { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); }
+.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .sm\:px-6 { padding-left: 24px; padding-right: 24px; }
+  .sm\:text-sm { font-size: 14px; }
+}
+
+@media (min-width: 1024px) {
+  .lg\:px-8 { padding-left: 32px; padding-right: 32px; }
+}

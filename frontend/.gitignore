@@ -1,0 +1,70 @@
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
+.idea
+
+# Local env files
+.env
+.env.development
+.env.test
+.env.local
+.env.dev
+.env.production
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+!logs/.gitkeep # Keep the logs directory in Git if it contains other files
+
+# OS
+.DS_Store # macOS specific
+Thumbs.db # Windows specific
+
+# Tests
+/coverage
+/.nyc_output
+test-report.xml
+.scannerwork
+
+# IDEs and editors
+/.idea # IntelliJ/WebStorm
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace # Sublime Text
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Databases
+*.sqlite
+*.sqlite-journal
+
+# Prisma specific (if used)
+prisma/migrations # If you manage migrations manually and don't want them tracked
+# prisma/generated # If you regenerate Prisma client on each build
+
+# NestJS specific
+requests.http # If using VSCode REST Client extension

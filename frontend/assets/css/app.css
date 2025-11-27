@@ -1,0 +1,69 @@
+html {
+    background-color: #000000;
+}
+
+.custom-modal .p-dialog-header {
+    display: none !important;
+}
+
+.custom-modal .p-dialog-content {
+    padding: 0 !important;
+}
+
+.vti__input {
+    background: transparent;
+}
+
+.carousel__pagination-button {
+    height: 10px !important;
+    width: 10px !important;
+    border-radius: 100% !important;
+    background-color: white !important;
+}
+
+.carousel__pagination-button--active {
+    background-color: #EB0000 !important;
+}
+
+.carousel__icon {
+    color: #EB0000 !important;
+
+}
+
+.carousel__prev,
+.carousel__next {
+    height: 3rem !important;
+    width: 3rem !important;
+}
+
+
+.carousel__pagination {
+    position: relative !important;
+    margin-top: 35px !important;
+}
+
+.custom_datatable .p-datatable-header,
+.custom_datatable td {
+    padding: 0;
+}
+
+.cercle-place {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0 auto;
+    color: white;
+}
+
+.success {
+    color: green;
+}
+
+.error {
+    color: #EB0000;
+}

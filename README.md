@@ -1,101 +1,85 @@
-Ce projet contient deux parties principales :
+# 📘 EL PIRATA -- Guide d'installation et d'exécution
 
-- **Backend (Laravel + Docker)**
-- **Frontend (Docker / React ou autre framework)**
+Ce projet se compose de deux parties principales :
 
-L’application utilise **Docker Compose** pour lancer l’environnement complet facilement.
+-   **Backend (Laravel, Dockerisé)**
+-   **Frontend (React ou autre framework, Dockerisé)**
 
----
+L'application utilise **Docker Compose** pour lancer l'ensemble de
+l'environnement facilement et rapidement.
+
+------------------------------------------------------------------------
 
 ## 🚀 Lancement du projet
 
-### 1. Cloner le projet
-\`\`\`
-git clone https://github.com/TNdria/el_pirata.git
-cd el_pirata
-\`\`\`
+### 1. Cloner le dépôt
 
-### 2. Lancer les containers Docker
-\`\`\`
-docker-compose up -d
-\`\`\`
+    git clone https://github.com/TNdria/el_pirata.git
+    cd el_pirata
 
-### 3. Vérifier que le backend fonctionne
-\`\`\`
-docker logs backend
-\`\`\`
+### 2. Démarrer les services Docker
 
-Tu dois voir :
-\`\`\`
-INFO  Server running on http://0.0.0.0:8000
-\`\`\`
+    docker-compose up -d
 
----
+### 3. Vérifier le fonctionnement du backend
 
-## 🔧 Configuration Backend (Laravel)
+    docker logs backend
 
-### Installer les dépendances (si hors docker)
-\`\`\`
-composer install
-\`\`\`
+Tu devrais voir apparaître :
 
-### Copier l’environnement
-\`\`\`
-cp .env.example .env
-\`\`\`
+    INFO  Server running on http://0.0.0.0:8000
 
-### Générer la clé d’application
-\`\`\`
-php artisan key:generate
-\`\`\`
+------------------------------------------------------------------------
 
-### Lancer les migrations
-\`\`\`
-php artisan migrate --seed
-\`\`\`
+## 🔧 Configuration du Backend (Laravel)
 
----
+### Installer les dépendances (si utilisation hors Docker)
 
-## 🐳 Docker – Commandes utiles
+    composer install
 
-### Arrêter tous les containers
-\`\`\`
-docker-compose down
-\`\`\`
+### Copier le fichier d'environnement
 
-### Redémarrer le projet
-\`\`\`
-docker-compose restart
-\`\`\`
+    cp .env.example .env
 
-### Voir les logs
-\`\`\`
-docker logs backend
-docker logs frontend
-\`\`\`
+### Générer la clé de l'application Laravel
 
----
+    php artisan key:generate
 
-## 🔑 Sécurité – Suppression des secrets
+### Lancer les migrations + données d'exemple
 
-Les clés API ont été supprimées du dépôt grâce à :
+    php artisan migrate --seed
 
-\`\`\`
-git filter-repo --force --invert-paths --path frontend/docker-compose.yml
-\`\`\`
+------------------------------------------------------------------------
 
----
+## 🐳 Commandes Docker utiles
+
+### Arrêter tous les services
+
+    docker-compose down
+
+### Redémarrer tous les services
+
+    docker-compose restart
+
+### Voir les logs d'un service
+
+    docker logs backend
+    docker logs frontend
+
+------------------------------------------------------------------------
+
+## 🔑 Sécurité : Nettoyage des secrets
+
+Les anciennes clés API ont été supprimées du dépôt grâce à :
+
+    git filter-repo --force --invert-paths --path frontend/docker-compose.yml
+
+------------------------------------------------------------------------
 
 ## 📁 Structure du projet
 
-\`\`\`
-el_pirata/
-│── backend/        # Code Frontend
-│── el_pirata_api/       # Code Laravel
-│── docker-compose.yml
-└── README.md
-\`\`\`
-
----
-
-## 
+    el_pirata/
+    │── backend/               # Backend Laravel
+    │── el_pirata_api/         # Frontend (React ou autre)
+    │── docker-compose.yml
+    └── README.md

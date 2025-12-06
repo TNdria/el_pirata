@@ -1,24 +1,51 @@
-version: "3.9"
-
 services:
+  # API Laravel 
   backend:
     build:
       context: ./el_pirata_api
       dockerfile: Dockerfile
-    container_name: backend
+    container_name: el_pirata_backend
     ports:
       - "8000:8000"
     volumes:
       - ./el_pirata_api:/var/www
+    networks:
+      - app-network
 
+  # Frontend Nuxt 
   frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - NODE_ENV=production
+    container_name: el_pirata_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NITRO_HOST=0.0.0.0
+      - NITRO_PORT=3000
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  #  frontend 
+  frontend2:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: frontend
+    container_name: el_pirata_frontend2
     ports:
       - "3002:3000"
     volumes:
       - ./backend:/app
+      - /app/node_modules
     depends_on:
       - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
